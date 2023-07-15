@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-      PATH = "$PATH:/opt/apache-maven-3.9.1/bin"
+      PATH = "$PATH:/opt/maven/bin"
     }
     
     stages {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('CODE CHECKOUT') {
             steps {
-                git 'https://github.com/Mahesh8887/devops_real_time_project_1.git'
+                git 'https://github.com/devopsstudygroupadmin/devops_real_time_project_1.git'
             }
         }
         stage('MODIFIED IMAGE TAG') {
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
-                    -Dsonar.host.url=http://3.1.24.180:9000 \
+                    -Dsonar.host.url=http://44.214.183.141:9000 \
                     -Dsonar.token=$sonar_token'
             }
         } 

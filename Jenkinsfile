@@ -19,9 +19,9 @@ pipeline {
         stage('MODIFIED IMAGE TAG') {
             steps {
                 sh '''
-                   sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
-                   sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
-                   sed -i "s/IMAGE_NAME/$JOB_NAME:v1.$BUILD_ID/g" webapp/src/main/webapp/index.jsp
+                   sed "s/godwill:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
+                   sed -i "s/godwill:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
+                   sed -i "s/godwill/$JOB_NAME:v1.$BUILD_ID/g" webapp/src/main/webapp/index.jsp
                    '''
             }            
         }
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
-                    -Dsonar.host.url=http://44.214.183.141:9000 \
+                    -Dsonar.host.url=http://100.26.148.172:9000 \
                     -Dsonar.token=$sonar_token'
             }
         } 
